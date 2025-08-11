@@ -1,19 +1,17 @@
 # 📝 AI Resume Builder
 
-A modern **AI-powered Resume Builder** built with **React**, **Spring Boot**, and **OpenRouter AI models**.  
-It generates clean, professional resumes instantly, with a print-friendly white background layout.
+A professional AI-powered Resume Builder application that generates well-structured and visually consistent resumes based on user input.  
+This project focuses mainly on the **backend** implementation while keeping the frontend minimal for testing purposes.
 
 ---
 
 ## 🚀 Features
-
-- **AI-powered resume generation** using OpenRouter models
-- **Professional, ATS-friendly** layout (white background, no boxed styles)
-- **Live preview** while editing resume details
-- Fully responsive design using **Tailwind CSS**
-- Export-ready for **PDF** or printing
-- Backend-focused implementation — **primary effort on Java Spring Boot API & AI integration**,  
-  while frontend is minimal and functional
+- Generates **professional IT job resumes** in JSON format
+- Reads prompt from `resume_prompt.txt` for consistent AI output
+- Uses **OpenRouter API** with the `openchat/openchat-7b` model (Free Tier support)
+- Handles structured resume data (Personal Info, Skills, Experience, Education, Projects, etc.)
+- Backend built with **Spring Boot** for scalability and clean architecture
+- Minimal **React.js frontend** for testing and previewing generated resumes
 
 ---
 
@@ -29,104 +27,98 @@ flowchart TD
     B -->|Send JSON Resume| F[Frontend Displays Resume]
 🛠 Tech Stack
 Backend (Main Focus)
-Spring Boot (Java)
+Java 17
 
-REST API endpoints for AI request handling
+Spring Boot 3
 
-OpenRouter API integration
+OpenRouter API (AI model: openchat/openchat-7b)
 
-Prompt-based AI resume generation
+Maven
 
-Frontend (Basic Functional Layer)
+REST API for communication
+
+Frontend (Minimal for Testing)
 React.js
 
-Tailwind CSS + DaisyUI
+Tailwind CSS
 
 react-hook-form for form handling
 
 react-hot-toast for notifications
 
-AI
-OpenRouter API with the free openchat/openchat-7b model
-
-AI prompt stored in resume_prompt.txt
-
 📂 Project Structure
 bash
 Copy
 Edit
-frontend/
-│── src/
-│   ├── components/
-│   │   ├── GenerateResume.jsx     # AI prompt + API call
-│   │   ├── Resume.jsx              # Resume preview component
-│   │   ├── FormInputs.jsx          # Input fields for resume
+ai-resume-builder/
+│
+├── backend/
+│   ├── src/main/java/com/resume/backend/
+│   │   ├── controller/        # API controllers
+│   │   ├── service/           # Business logic
+│   │   ├── config/            # OpenRouter API config
+│   │   └── ResumeBuilderApp.java
+│   ├── resources/
+│       ├── application.properties
+│       └── resume_prompt.txt  # AI prompt template
+│
+├── frontend/
+│   ├── src/components/
+│   │   ├── GenerateResume.jsx
+│   │   └── Resume.jsx
 │   ├── App.jsx
-│   ├── index.jsx
-│── public/
-│── tailwind.config.js
-backend/
-│── src/main/java/com/example/resumebuilder/
-│   ├── controller/
-│   ├── service/
-│   ├── ResumeBuilderApplication.java
-resume_prompt.txt                   # AI resume generation prompt
-⚙️ Installation & Setup
-1️⃣ Clone the repository
+│   └── index.js
+⚙️ Setup Instructions
+1️⃣ Backend
 bash
 Copy
 Edit
-git clone https://github.com/your-username/ai-resume-builder.git
-cd ai-resume-builder
-2️⃣ Install frontend dependencies
+cd backend
+# Add your OpenRouter API key in application.properties
+# Example:
+# openrouter.api.key=sk-xxxxxxxxxxxxxxxx
+mvn spring-boot:run
+2️⃣ Frontend
 bash
 Copy
 Edit
 cd frontend
 npm install
-3️⃣ Configure environment variables
-Create a .env file in frontend/:
-
-env
-Copy
-Edit
-VITE_API_URL=http://localhost:8080   # Backend API URL
-OPENROUTER_API_KEY=your_openrouter_api_key
-4️⃣ Start the frontend
-bash
-Copy
-Edit
 npm run dev
-5️⃣ Start the backend
-bash
+🔑 Environment Variables
+In application.properties:
+
+properties
 Copy
 Edit
-cd backend
-./mvnw spring-boot:run
-🖥 Usage
-Fill in your personal information, skills, and experience in the form.
+openrouter.api.key=your_openrouter_api_key
+📌 API Testing with Postman
+Start backend server (mvn spring-boot:run)
 
-Click Generate Resume to get an AI-generated professional resume.
+Open Postman
 
-Preview your resume in real-time.
+Make a POST request:
 
-Print or export as PDF.
+URL: http://localhost:8080/api/generate-resume
 
-🎨 Customization
-Change AI prompt → Edit resume_prompt.txt
+Body: Raw JSON (Example):
 
-Modify resume styling → Update Resume.jsx
+json
+Copy
+Edit
+{
+  "userDescription": "I am a Java Full Stack Developer with internship experience at XYZ Corp..."
+}
+🎯 My Role & Focus
+I primarily focused on backend development, ensuring:
 
-Change AI model → Update backend OpenRouter API call
+Clean and maintainable Spring Boot architecture
 
-📌 Future Improvements
-Multiple resume templates
-User authentication & saved resumes
+API integration with OpenRouter
 
+JSON schema consistency
 
+AI prompt optimization
 
-👨‍💻 Author
-Developed by [Your Name]
-📧 Email:chenna6305092639@gmail.com
-Note: My primary focus was on the backend development of this project — including the Spring Boot API, AI model integration, and data handling.
-The frontend was implemented only to provide a minimal, functional interface for testing and using the backend features.
+The frontend is kept simple to allow other developers or designers to enhance it further.
+
