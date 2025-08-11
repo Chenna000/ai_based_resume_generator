@@ -1,17 +1,18 @@
 # 📝 AI Resume Builder
 
 A professional AI-powered Resume Builder application that generates well-structured and visually consistent resumes based on user input.  
-This project focuses mainly on the **backend** implementation while keeping the frontend minimal for testing purposes.
+This project focuses mainly on the backend implementation while keeping the frontend minimal for testing purposes.
 
 ---
 
 ## 🚀 Features
-- Generates **professional IT job resumes** in JSON format
-- Reads prompt from `resume_prompt.txt` for consistent AI output
-- Uses **OpenRouter API** with the `openchat/openchat-7b` model (Free Tier support)
-- Handles structured resume data (Personal Info, Skills, Experience, Education, Projects, etc.)
-- Backend built with **Spring Boot** for scalability and clean architecture
-- Minimal **React.js frontend** for testing and previewing generated resumes
+
+- Generates **professional IT job resumes** in JSON format  
+- Reads prompt from `resume_prompt.txt` for consistent AI output  
+- Uses **OpenRouter API** with the `openchat/openchat-7b` model (**Free Tier support**)  
+- Handles structured resume data (Personal Info, Skills, Experience, Education, Projects, etc.)  
+- Backend built with **Spring Boot** for scalability and clean architecture  
+- Minimal **React.js frontend** for testing and previewing generated resumes  
 
 ---
 
@@ -25,13 +26,19 @@ flowchart TD
     D --> E[AI Generates Resume in JSON Format]
     E --> B
     B -->|Send JSON Resume| F[Frontend Displays Resume]
-🛠 Tech Stack
+
+```
+
+
+
+
+#Tech Stack
 Backend (Main Focus)
 Java 17
 
 Spring Boot 3
 
-OpenRouter API (AI model: openchat/openchat-7b)
+OpenRouter API (Model: openchat/openchat-7b)
 
 Maven
 
@@ -46,69 +53,69 @@ react-hook-form for form handling
 
 react-hot-toast for notifications
 
-📂 Project Structure
-bash
-Copy
-Edit
-ai-resume-builder/
-│
+
+
+## 📂 Project Structure
+
+```ai-resume-builder/
 ├── backend/
-│   ├── src/main/java/com/resume/backend/
-│   │   ├── controller/        # API controllers
-│   │   ├── service/           # Business logic
-│   │   ├── config/            # OpenRouter API config
-│   │   └── ResumeBuilderApp.java
-│   ├── resources/
-│       ├── application.properties
-│       └── resume_prompt.txt  # AI prompt template
+│ ├── src/main/java/com/resume/backend/
+│ │ ├── controller/ # API controllers
+│ │ ├── service/ # Business logic
+│ │ ├── config/ # OpenRouter API config
+│ │ └── ResumeBuilderApp.java
+│ ├── resources/
+│ ├── application.properties
+│ └── resume_prompt.txt # AI prompt template
 │
 ├── frontend/
-│   ├── src/components/
-│   │   ├── GenerateResume.jsx
-│   │   └── Resume.jsx
-│   ├── App.jsx
-│   └── index.js
-⚙️ Setup Instructions
-1️⃣ Backend
-bash
-Copy
-Edit
+│ ├── src/components/
+│ │ ├── GenerateResume.jsx
+│ │ └── Resume.jsx
+│ ├── App.jsx
+│ └── index.js
+```
+## ⚙️ Setup Instructions
+
+### 1️⃣ Backend
+```bash
 cd backend
 # Add your OpenRouter API key in application.properties
 # Example:
 # openrouter.api.key=sk-xxxxxxxxxxxxxxxx
 mvn spring-boot:run
+```
+
 2️⃣ Frontend
-bash
-Copy
-Edit
-cd frontend
+```cd frontend
 npm install
 npm run dev
-🔑 Environment Variables
+```
+3.🔑 Environment Variables
 In application.properties:
 
-properties
-Copy
-Edit
+```
 openrouter.api.key=your_openrouter_api_key
+```
+
 📌 API Testing with Postman
-Start backend server (mvn spring-boot:run)
-
+```Start backend server:
+mvn spring-boot:run
+```
+```
 Open Postman
-
 Make a POST request:
 
 URL: http://localhost:8080/api/generate-resume
+```
 
-Body: Raw JSON (Example):
-
-json
-Copy
-Edit
+Body (Raw JSON Example):
+```
 {
   "userDescription": "I am a Java Full Stack Developer with internship experience at XYZ Corp..."
 }
+```
+
 🎯 My Role & Focus
 I primarily focused on backend development, ensuring:
 
@@ -120,5 +127,5 @@ JSON schema consistency
 
 AI prompt optimization
 
-The frontend is kept simple to allow other developers or designers to enhance it further.
+The frontend is intentionally kept minimal to allow future designers and developers to enhance the UI for production use.
 
